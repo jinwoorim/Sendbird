@@ -1,6 +1,6 @@
 # Sendbird
 Sendbird 연동 방법
-
+- [메뉴얼](https://sendbird.com/docs/support-chat/guide/v1/overview)
 - 초기 세팅
 
 ``` Shell
