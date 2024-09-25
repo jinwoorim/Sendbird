@@ -49,3 +49,21 @@ SELECT FIELDS(ALL) FROM Sendbird__Setting__c LIMIT 1
 - 설정 > 프로필 > 시스템관리자 > '서비스 현재 상태 액세스가 활성화됨'에 추가
 
 <img src = "https://github.com/user-attachments/assets/5e70d346-f451-4dde-aa38-7f119cb4e492"/>
+
+- 설정 > 라우팅 구성 > 새로만들기
+
+<img src = "https://github.com/user-attachments/assets/34e785b7-f626-47ac-86e4-1b44b37ccdbb"/>
+
+- 설정 > 대기열 > 새로만들기
+
+<img src = "https://github.com/user-attachments/assets/53b4b9d1-4cac-4db0-99a8-c9c4cda148f7"/>
+
+- 설정 > 사례 할당 규칙 > 새로만들기
+
+<img src = "https://github.com/user-attachments/assets/e8ff0e5b-64c5-4acd-9a26-c12a46b69f02"/>
+
+- 설정 > 프로필 > 시스템 관리자 > 
+
+## UI 구성 요소 추가
+
+
