@@ -62,8 +62,15 @@ SELECT FIELDS(ALL) FROM Sendbird__Setting__c LIMIT 1
 
 <img src = "https://github.com/user-attachments/assets/e8ff0e5b-64c5-4acd-9a26-c12a46b69f02"/>
 
-- 설정 > 프로필 > 시스템 관리자 > 
+- 설정 > 프로필 > 시스템 관리자 > 활성화된 사용자 정의 권한 > Supervisor Setting 빼기 
 
-## UI 구성 요소 추가
+## 4. UI 구성 요소 추가
 
+- 설정 > 앱 관리자 > 서비스 콘솔
+
+<img src = "https://github.com/user-attachments/assets/8438d98f-e0dc-46b6-86f6-0113005778ae"/>
+
+- Sendbird Chat Panel 노출
+
+<img src = "https://github.com/user-attachments/assets/9ea5b76c-1970-4aa2-84c5-89f70f2bfa73"/>
 
