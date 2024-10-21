@@ -148,3 +148,14 @@ global without sharing class SendbirdToCaseController {
 - 공개 액세스 설정
 
 <img src = "https://github.com/user-attachments/assets/f8efd074-a747-4c3c-a016-be244eb3ef8f"/>
+
+- 사이트 게스트 프로필에 Settings와 Summaries에 대한 권한 주기
+
+<img src = "https://github.com/user-attachments/assets/f5f2f11e-4e94-4ba3-ae9a-bf46638ddb7e"/>
+
+- 공유 설정 Setting에 공유 규칙 만들기
+
+<img src = "https://github.com/user-attachments/assets/442657c0-9383-48a2-8e76-bcb39088785e"/>
+
+<img src = "https://github.com/user-attachments/assets/2bdb97dc-6e3e-4c9d-98e0-db6bdeb48b96"/>
+
