@@ -74,3 +74,77 @@ SELECT FIELDS(ALL) FROM Sendbird__Setting__c LIMIT 1
 
 <img src = "https://github.com/user-attachments/assets/9ea5b76c-1970-4aa2-84c5-89f70f2bfa73"/>
 
+## 5. REST API를 통해 케이스 만들기
+
+- SendbirdToCaseController 클래스 추가
+
+``` java
+
+// For the REST API, we use the RestResource annotation.
+// We map it to /cases/, so the final URL is YOUR-PUBLIC-DOMAIN/services/apexrest/cases/.
+@RestResource(urlMapping='/cases/')
+global without sharing class SendbirdToCaseController {
+    // Use a POST method to create a Case object.
+    @HttpPost
+    global static void create() {
+        RestRequest request = RestContext.request;
+        RestResponse response = RestContext.response;
+        Map<String, String> headers = request.headers;
+
+        // To use the request body, deserialize it. In this sample, we use Map.
+        String requestBodyStr = request.requestBody.toString();
+        Map<String, Object> body = (Map<String, Object>) JSON.deserializeUntyped(requestBodyStr);
+
+        String suppliedName = (String) body.get('suppliedName');
+        String suppliedPhone = (String) body.get('suppliedPhone');
+
+        Account account;
+
+        List<Account> accounts = [
+            SELECT Id
+            FROM Account
+            WHERE (Name = :suppliedName AND (Phone = :suppliedPhone OR PersonMobilePhone__c = :suppliedPhone))
+            LIMIT 1
+        ];
+
+        if (!accounts.isEmpty()) {
+            account = accounts[0];
+        } else {
+            account = new Account();
+            account.Name = suppliedName;
+            account.Phone = suppliedPhone;
+
+            insert account;
+        }
+
+        // Create a Case record and edit its status by setting its parameters.
+        // Sendbird__UserId__c, Sendbird__ChannelUrl__c, and Sendbird__IsEinsteinBotsCase__c are required.
+        Case newCase = new Case();
+        newCase.AccountId = account.Id;
+        newCase.Subject = (String) body.get('subject');
+        newCase.Description = (String) body.get('description');
+        newCase.SuppliedName = suppliedName;
+        newCase.SuppliedPhone = suppliedPhone;
+        newCase.Sendbird__UserId__c = (String) body.get('sendbirdUserId');
+        newCase.Sendbird__ChannelUrl__c = (String) body.get('sendbirdChannelUrl');
+        newCase.Sendbird__IsEinsteinBotsCase__c = (Boolean) body.get('isEinsteinBotsCase');
+
+        // Save your new Case.
+        insert newCase;
+
+        // Get a response with the information of your new Case.
+        response.addHeader('Access-Control-Allow-Origin', '*');
+        response.responseBody = Blob.valueof(JSON.serialize(newCase));
+        response.statusCode = 200;
+    }
+}
+
+```
+
+- 사이트 만들기
+
+<img src = "https://github.com/user-attachments/assets/1cce1b30-ccce-4abc-a6f7-13157324456e"/>
+
+- 공개 액세스 설정
+
+<img src = "https://github.com/user-attachments/assets/f8efd074-a747-4c3c-a016-be244eb3ef8f"/>
